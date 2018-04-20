@@ -5,7 +5,7 @@ type t = {clientId: int};
 let req: Express.Request.t = [%raw "{clientId: 1}"];
 
 let res: Express.Response.t = [%raw
-  "{ status: () => ({ json: () => ({clientId: 1}) }) }"
+  "{ status: (code) => ({ json: () => ({clientId: code === 200 ? 1 : -1}) }) }"
 ];
 
 external complete : Express.complete => Js.Json.t = "%identity";
