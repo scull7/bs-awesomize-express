@@ -2,15 +2,15 @@ open Jest;
 
 type t = {clientId: int};
 
-let req: Express.Request.t = [%raw "{\"clientId\": \"1\"}"];
+let req: Express.Request.t = [%raw "{clientId: 1}"];
 
 let res: Express.Response.t = [%raw
-  "{ status: () => ({ json: () => ({\"clientId\": \"1\"}) }) }"
+  "{ status: () => ({ json: () => ({clientId: 1}) }) }"
 ];
 
-external complete : Express.complete => t = "%identity";
+external complete : Express.complete => Js.Json.t = "%identity";
 
-external encoded : Express.Request.t => Js.Json.t = "%identity";
+external castExpressToJson : Express.Request.t => Js.Json.t = "%identity";
 
 describe("Awesomize Express", () =>
   describe("make", () => {
@@ -25,9 +25,9 @@ describe("Awesomize Express", () =>
         }: Awesomize.definition,
       ),
     |];
-    let decoder = _ => {clientId: 1};
-    let handler = (req, _) => Js.Promise.resolve @@ encoded @@ req;
-    let encoder = x => x;
+    let decoder = _ => ();
+    let handler = (req, _) => Js.Promise.resolve();
+    let encoder = _ => castExpressToJson(req);
     testPromise("success", () =>
       AwesomizeExpress.make(
         ~schema,
@@ -38,15 +38,23 @@ describe("Awesomize Express", () =>
         req,
         res,
       )
-      |> Js.Promise.then_(result =>
+      |> Js.Promise.then_(result => {
+           let temp = {
+             clientId:
+               Json.Decode.field(
+                 "clientId",
+                 Json.Decode.int,
+                 complete(result),
+               ),
+           };
            (
-             switch (complete @@ result) {
-             | {clientId} => pass
-             | _ => fail("failed")
+             switch (temp) {
+             | {clientId: 1} => pass
+             | _ => fail("not an expected result")
              }
            )
-           |> Js.Promise.resolve
-         )
+           |> Js.Promise.resolve;
+         })
     );
   })
 );
