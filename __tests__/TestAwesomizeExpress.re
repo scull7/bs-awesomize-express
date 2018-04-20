@@ -25,9 +25,9 @@ describe("Awesomize Express", () =>
         }: Awesomize.definition,
       ),
     |];
-    let decoder = _ => ();
+    let decoder = (_) => ();
     let handler = (req, _) => Js.Promise.resolve();
-    let encoder = _ => castExpressToJson(req);
+    let encoder = (_) => castExpressToJson(req);
     testPromise("success", () =>
       AwesomizeExpress.make(
         ~schema,
