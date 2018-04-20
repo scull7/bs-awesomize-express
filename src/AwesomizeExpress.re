@@ -1,11 +1,10 @@
 /* @TODO - Awesomizer needs to support a context and this integration needs
-   to accept a function which can generate that context from the request
-   object.
-*/
+         to accept a function which can generate that context from the request
+         object.
+   */
 let make = (~schema, ~decoder, ~encoder, ~handler) => {
   let beltMapToJson = map =>
     Belt.Map.String.toArray(map) |> Js.Dict.fromArray |> Js.Json.object_;
-
   let errorMapToJson = map =>
     Belt.Map.String.map(map, x =>
       switch (x) {
@@ -14,17 +13,14 @@ let make = (~schema, ~decoder, ~encoder, ~handler) => {
       }
     )
     |> beltMapToJson;
-
   let awesomize = Awesomize.make(schema);
-  (_, req, res) => {
+  (_, req, res) =>
     Express.Request.asJsonObject(req)
     |> awesomize
     |> Awesomize.Result.fold(
          err =>
            res
-           |> Express.Response.status(
-                Express.Response.StatusCode.BadRequest,
-              )
+           |> Express.Response.status(Express.Response.StatusCode.BadRequest)
            |> Express.Response.sendJson(err |> errorMapToJson)
            |> Js.Promise.resolve,
          data =>
@@ -40,5 +36,4 @@ let make = (~schema, ~decoder, ~encoder, ~handler) => {
               ),
        )
     |> Js.Promise.then_(result => result);
-    }
 };
