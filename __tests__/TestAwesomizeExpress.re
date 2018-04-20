@@ -12,20 +12,6 @@ external complete : Express.complete => t = "%identity";
 
 external encoded : Express.Request.t => Js.Json.t = "%identity";
 
-let expectPass = (title, testFn) =>
-  testPromise(title, () =>
-    testFn()
-    |> Js.Promise.then_(result =>
-         (
-           switch (result) {
-           | None => pass
-           | Some(message) => fail(message)
-           }
-         )
-         |> Js.Promise.resolve
-       )
-  );
-
 describe("Awesomize Express", () =>
   describe("make", () => {
     let schema = [|
