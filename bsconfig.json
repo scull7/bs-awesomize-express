@@ -15,6 +15,7 @@
   ],
   "bs-dev-dependencies": [
     "@glennsl/bs-jest",
+    "@glennsl/bs-json",
     "bs-awesomize",
     "bs-express"
   ],
