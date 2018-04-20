@@ -25,6 +25,14 @@ describe("Awesomize Express", () =>
     let res: Express.Response.t = [%raw
       "{ status: (code) => ({ json: () => ({clientId: code === 200 ? 1 : -1}) }) }"
     ];
+    let convertJsonToT = complete => {
+      clientId:
+        Json.Decode.field(
+          "clientId",
+          Json.Decode.int,
+          castCompleteToJson(complete),
+        ),
+    };
     testPromise("success", () => {
       let req: Express.Request.t = [%raw "{clientId: 1}"];
       AwesomizeExpress.make(
@@ -36,23 +44,15 @@ describe("Awesomize Express", () =>
         req,
         res,
       )
-      |> Js.Promise.then_(result => {
-           let temp = {
-             clientId:
-               Json.Decode.field(
-                 "clientId",
-                 Json.Decode.int,
-                 castCompleteToJson(result),
-               ),
-           };
+      |> Js.Promise.then_(result =>
            (
-             switch (temp) {
+             switch (convertJsonToT @@ result) {
              | {clientId: 1} => pass
              | _ => fail("not an expected result")
              }
            )
-           |> Js.Promise.resolve;
-         });
+           |> Js.Promise.resolve
+         );
     });
     testPromise("fail", () => {
       let req: Express.Request.t = [%raw "{djfalsfjdskalfjs: 1}"];
@@ -65,23 +65,15 @@ describe("Awesomize Express", () =>
         req,
         res,
       )
-      |> Js.Promise.then_(result => {
-           let temp = {
-             clientId:
-               Json.Decode.field(
-                 "clientId",
-                 Json.Decode.int,
-                 castCompleteToJson(result),
-               ),
-           };
+      |> Js.Promise.then_(result =>
            (
-             switch (temp) {
+             switch (convertJsonToT @@ result) {
              | {clientId: (-1)} => pass
              | _ => fail("not an expected result")
              }
            )
-           |> Js.Promise.resolve;
-         });
+           |> Js.Promise.resolve
+         );
     });
   })
 );
