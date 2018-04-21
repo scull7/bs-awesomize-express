@@ -4,7 +4,7 @@ type t = {status: int};
 
 external castCompleteToJson : Express.complete => Js.Json.t = "%identity";
 
-external createJson : t => Js.Json.t = "%identity";
+external createJson : 'x => Js.Json.t = "%identity";
 
 describe("Awesomize Express", () =>
   describe("make", () => {
@@ -20,7 +20,7 @@ describe("Awesomize Express", () =>
       ),
     |];
     let decoder = (_) => ();
-    let encoder = (_) => createJson([%raw "{clientId: 1}"]);
+    let encoder = (_) => createJson @@ [%raw "{clientId: 1}"];
     let handler = (_, _) => Js.Promise.resolve();
     let res: Express.Response.t = [%raw
       "{ status: (code) => ({ json: () => ({status: code}) }) }"
