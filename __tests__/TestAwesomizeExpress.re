@@ -1,6 +1,6 @@
 open Jest;
 
-type t = {clientId: int};
+type t = {status: int};
 
 external castCompleteToJson : Express.complete => Js.Json.t = "%identity";
 
@@ -21,14 +21,14 @@ describe("Awesomize Express", () =>
     |];
     let decoder = (_) => ();
     let encoder = (_) => createJson([%raw "{clientId: 1}"]);
-    let handler = (req, _) => Js.Promise.resolve();
+    let handler = (_, _) => Js.Promise.resolve();
     let res: Express.Response.t = [%raw
-      "{ status: (code) => ({ json: () => ({clientId: code === 200 ? 1 : -1}) }) }"
+      "{ status: (code) => ({ json: () => ({status: code}) }) }"
     ];
     let convertJsonToT = complete => {
-      clientId:
+      status:
         Json.Decode.field(
-          "clientId",
+          "status",
           Json.Decode.int,
           castCompleteToJson(complete),
         ),
@@ -47,8 +47,9 @@ describe("Awesomize Express", () =>
       |> Js.Promise.then_(result =>
            (
              switch (convertJsonToT @@ result) {
-             | {clientId: 1} => pass
-             | _ => fail("not an expected result")
+             | {status: 200} => pass
+             | _ =>
+               fail("not an expected result, expecting a status code of 200")
              }
            )
            |> Js.Promise.resolve
@@ -68,8 +69,9 @@ describe("Awesomize Express", () =>
       |> Js.Promise.then_(result =>
            (
              switch (convertJsonToT @@ result) {
-             | {clientId: (-1)} => pass
-             | _ => fail("not an expected result")
+             | {status: 400} => pass
+             | _ =>
+               fail("not an expected result, expecting a status code of 400")
              }
            )
            |> Js.Promise.resolve
