@@ -1,0 +1,28 @@
+{
+  "name": "bs-awesomize-express",
+  "version": "1.0.0",
+  "package-specs": {
+    "module": "commonjs",
+    "in-source": true
+  },
+  "suffix": ".bs.js",
+  "sources": [
+    "src",
+    {
+      "dir": "__tests__",
+      "type": "dev"
+    }
+  ],
+  "bs-dev-dependencies": [
+    "@glennsl/bs-jest",
+    "@glennsl/bs-json",
+    "bs-awesomize",
+    "bs-express"
+  ],
+  "bs-dependencies": [
+    "bs-awesomize",
+    "bs-express"
+  ],
+  "bsc-flags": [ "-bs-super-errors", "-bs-sort-imports" ],
+  "refmt": 3
+}

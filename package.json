@@ -1,0 +1,29 @@
+{
+  "name": "bs-awesomize-express",
+  "version": "1.0.0",
+  "description": "An ExpressJs integration API for the Awesomizer",
+  "scripts": {
+    "build": "bsb -make-world",
+    "clean": "bsb -clean-world",
+    "install:peers": "yarn add $(jq -r '.peerDependencies|keys|join(\" \")' package.json)",
+    "start": "bsb -make-world -w",
+    "test": "yarn run clean; yarn run build; jest --coverage",
+    "watch:jest": "jest --coverage --watchAll"
+  },
+  "main": "src/AwesomizeExpress.bs.js",
+  "repository": "https://github.com/carmonw/bs-awesomize-express",
+  "author": "Carmon Wong <cwong@influential.co>",
+  "license": "MIT",
+  "peerDependencies": {
+    "bs-platform": "^2.2.3"
+  },
+  "dependencies": {
+    "bs-awesomize": "^1.3.0",
+    "bs-express": "^0.6.0"
+  },
+  "devDependencies": {
+    "@glennsl/bs-jest": "^0.4.2",
+    "@glennsl/bs-json": "^1.2.0",
+    "jest-cli": "^22.4.3"
+  }
+}
