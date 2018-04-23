@@ -13,7 +13,7 @@
   },
   "main": "src/AwesomizeExpress.bs.js",
   "repository": "https://github.com/carmonw/bs-awesomize-express",
-  "author": "Carmon Wong <cwong@influential.co>",
+  "author": "Nathan Sculli <scull7@gmail.com>",
   "license": "MIT",
   "peerDependencies": {
     "bs-platform": "^2.2.3"
