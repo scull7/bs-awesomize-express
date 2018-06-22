@@ -30,12 +30,11 @@ let success = (promisified, decoder, encoder, req, res, data) =>
   |. promisified(req)
   |. (p => p |> Js.Promise.then_(j => sendJson(res, ok, j |> encoder)));
 
-let middleware = (awesomizer, success, error) =>
-  (. _, req, res) =>
-    Express.Request.asJsonObject(req)
-    |> awesomizer
-    |> Awesomize.Result.fold(error(req, res), success(req, res))
-    |> Js.Promise.then_(r => r);
+let middleware = (awesomizer, success, error, _, req, res) =>
+  Express.Request.asJsonObject(req)
+  |> awesomizer
+  |> Awesomize.Result.fold(error(req, res), success(req, res))
+  |> Js.Promise.then_(r => r);
 
 /* Public Functions */
 /* @TODO - Awesomizer needs to support a context and this integration needs
