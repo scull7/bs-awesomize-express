@@ -22,9 +22,9 @@
   dependencies:
     jest "^22.0.4"
 
-"@glennsl/bs-json@^1.2.0":
-  version "1.3.1"
-  resolved "https://registry.yarnpkg.com/@glennsl/bs-json/-/bs-json-1.3.1.tgz#64fc470cbe5e9779f49226a2d877169d3c67296a"
+"@glennsl/bs-json@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@glennsl/bs-json/-/bs-json-2.0.0.tgz#e621aac1e94d49bc12bf493b67c01c39e61a6415"
 
 abab@^1.0.4:
   version "1.0.4"
@@ -473,15 +473,25 @@ browser-resolve@^1.11.2:
   dependencies:
     resolve "1.1.7"
 
-bs-awesomize@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/bs-awesomize/-/bs-awesomize-1.3.0.tgz#cc0bb7f754934acf4e43b1e9a8454d307ac1f039"
+bs-awesomize@^1.4.11:
+  version "1.4.11"
+  resolved "https://registry.yarnpkg.com/bs-awesomize/-/bs-awesomize-1.4.11.tgz#592e0d801f4b37335520f7ea7bcf8498d2e0a871"
+  dependencies:
+    bs-platform "^3.0.0"
 
-bs-express@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/bs-express/-/bs-express-0.6.0.tgz#62e9372a5274c140701e578b0ca5745ce3625205"
+bs-express@^0.8.0:
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/bs-express/-/bs-express-0.8.0.tgz#4d239272d221fed4762e6b306edca85c50bbc381"
   dependencies:
     express "^4.16.3"
+
+bs-json@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/bs-json/-/bs-json-1.0.1.tgz#0e25ed5ba7164ab131e494669b755da9844cc37e"
+
+bs-platform@^3.0.0, bs-platform@^3.1.5:
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-3.1.5.tgz#fb34ee4702bc9163848d5537096c4f31ebaeed40"
 
 bser@^2.0.0:
   version "2.0.0"
@@ -2807,6 +2817,10 @@ realpath-native@^1.0.0:
   resolved "https://registry.yarnpkg.com/realpath-native/-/realpath-native-1.0.0.tgz#7885721a83b43bd5327609f0ddecb2482305fdf0"
   dependencies:
     util.promisify "^1.0.0"
+
+reason-future@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/reason-future/-/reason-future-2.2.1.tgz#35bb1f3e49f3bce14024b9c79a9ea6bc9fa1cd19"
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"

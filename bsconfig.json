@@ -15,13 +15,12 @@
   ],
   "bs-dev-dependencies": [
     "@glennsl/bs-jest",
-    "@glennsl/bs-json",
-    "bs-awesomize",
-    "bs-express"
+    "@glennsl/bs-json"
   ],
   "bs-dependencies": [
     "bs-awesomize",
-    "bs-express"
+    "bs-express",
+    "reason-future"
   ],
   "bsc-flags": [ "-bs-super-errors", "-bs-sort-imports" ],
   "refmt": 3
