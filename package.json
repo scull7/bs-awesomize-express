@@ -1,6 +1,6 @@
 {
   "name": "bs-awesomize-express",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "description": "An ExpressJs integration API for the Awesomizer",
   "scripts": {
     "build": "bsb -make-world",
