@@ -473,11 +473,11 @@ browser-resolve@^1.11.2:
   dependencies:
     resolve "1.1.7"
 
-bs-awesomize@^1.4.11:
-  version "1.4.11"
-  resolved "https://registry.yarnpkg.com/bs-awesomize/-/bs-awesomize-1.4.11.tgz#592e0d801f4b37335520f7ea7bcf8498d2e0a871"
+bs-awesomize@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/bs-awesomize/-/bs-awesomize-1.5.0.tgz#d261bded619354f7711eca74451f5ee61308d787"
   dependencies:
-    bs-platform "^3.0.0"
+    bs-platform "^4.0.1"
 
 bs-express@^0.8.0:
   version "0.8.0"
@@ -485,13 +485,9 @@ bs-express@^0.8.0:
   dependencies:
     express "^4.16.3"
 
-bs-json@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/bs-json/-/bs-json-1.0.1.tgz#0e25ed5ba7164ab131e494669b755da9844cc37e"
-
-bs-platform@^3.0.0, bs-platform@^3.1.5:
-  version "3.1.5"
-  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-3.1.5.tgz#fb34ee4702bc9163848d5537096c4f31ebaeed40"
+bs-platform@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/bs-platform/-/bs-platform-4.0.1.tgz#544b58c2a53299cf406b57477e06389e4adab421"
 
 bser@^2.0.0:
   version "2.0.0"
@@ -2818,9 +2814,9 @@ realpath-native@^1.0.0:
   dependencies:
     util.promisify "^1.0.0"
 
-reason-future@^2.2.1:
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/reason-future/-/reason-future-2.2.1.tgz#35bb1f3e49f3bce14024b9c79a9ea6bc9fa1cd19"
+reason-future@^2.3.1:
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/reason-future/-/reason-future-2.3.1.tgz#e86a5b835e542caa7c140ba2379be6d06ff0d2d0"
 
 regenerator-runtime@^0.11.0:
   version "0.11.1"

@@ -16,15 +16,14 @@
   "author": "Nathan Sculli <scull7@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "bs-awesomize": "^1.4.11",
+    "bs-awesomize": "^1.5.0",
     "bs-express": "^0.8.0",
-    "reason-future": "^2.2.1"
+    "reason-future": "^2.3.1"
   },
   "devDependencies": {
     "@glennsl/bs-jest": "^0.4.2",
     "@glennsl/bs-json": "^2.0.0",
-    "bs-json": "^1.0.1",
-    "bs-platform": "^3.1.5",
+    "bs-platform": "^4.0.1",
     "coveralls": "^3.0.0",
     "jest-cli": "^22.4.3",
     "nyc": "^11.4.1"
